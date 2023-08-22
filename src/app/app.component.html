@@ -1,0 +1,220 @@
+<h1>Sujeet pandit</h1>
+<h4>{{appnamesena}}</h4>
+<!-- app login component is here -->
+<!-- <app-login></app-login> -->
+<!-- signUp component -->
+<!-- <app-signup></app-signup> -->
+
+<h4>{{appname}}</h4>
+<h5>{{va1}}</h5>
+<h4>{{varaib}}</h4>
+<p>{{test()}}</p>
+<p>{{test1()}}</p>
+<button (click)="getName()">Click name</button>
+<button (click)="getAge(22)">get age</button>
+<!-- property (myname) call -->
+<button (click)="getAge(myname)">get </button>
+<!-- click evt -->
+<button (click)="ClickEvt('this is click')">get click</button><br>
+<!-- keyup evt --><br>
+<input type="text" (keyup)="ClickEvt1('this is keyup event')" placeholder="Click evt"/><br><br>
+<!-- keyup evt get value from input -->
+<!-- keydown evt get value from input and previous value -->
+<input type="text"  #box (keydown)="ClickEvt2(box.value)" placeholder="ClickEvt2"/> <br><br>
+<!-- keyup enter -->
+<input type="text"  #input  (keyup.enter)="KeyUP(input.value)" placeholder="keyup input"/> <br><br>
+
+<input type="text"  #inp  (keyup.space)="KeySpace(inp.value)" placeholder="KeySpace"/> <br><br>
+
+<!-- blur evt -->
+<input type="text"  #inp1  (blur)="blur(inp1.value)" placeholder="blur"/>
+
+<!-- mouse over evt-->
+
+<h1  (mouseover)="Eventover('mouseover')"
+style="background-color: rebeccapurple;">mouse evt</h1 >
+<!-- mouse leave evt -->
+<h1  (mouseleave)="Eventover('mouse leave evt')"
+style="background-color: rgb(11, 207, 109);">mouse evt</h1> 
+
+<!-- question i want to use two event in single element it is possible it is possible example -->
+<!-- #inp2 is Template Reference Variable -->
+<input type="text"  #inp2  (keyup)="NameEvent(inp2.value)" (mouseleave)="NameEvent('mouseleave')"/>
+
+<!-- property binding -->
+<br>
+<input type="text" [disabled]="disableBox" [value]=name placeholder="name enter"/>
+<br>
+<input type="text" disabled={{disableBox}}  value={{name}}/> // expression binding is not work in property bining
+<br>
+<button (click)="enabledBox()">Enabled texBox</button>
+
+<!-- if condition -->
+<h4 *ngIf=" show1 =='yes'">if block</h4>
+<!-- <h4 *ngIf=" show else elseB ">if block</h4> not work -->
+<!-- ng template by default is false -->
+<h3 #elseB>
+    <h4>else block</h4>
+</h3>
+<!-- ng containere -->
+<ng-container *ngIf="show == 'No';then ifid else elseid"> 
+</ng-container>
+<ng-template #elseid>
+    <h1>else clock</h1>
+</ng-template>
+<ng-template #ifid>
+    <h1>if clock</h1>
+</ng-template> 
+<!-- property binding --> //this is not working
+<!-- <ng-container [ngIf]="tem === 'red'">
+    <h1>red tem</h1>
+  </ng-container> -->
+
+ <ng-container *ngIf="tem === 'green'">
+    <h1>Green tem</h1>
+  </ng-container>
+  <ng-container *ngIf="tem === 'blue'">
+    <h1>Blue tem</h1>
+  </ng-container> 
+
+<textarea>{{obj.name}}</textarea>
+<textarea>{{obj.roll_no}}</textarea>
+<div>{{arr}}</div>
+<div>{{arr.length}}</div>
+<div>{{arr[0]}}</div>
+<div>{{siteUrl}}</div>
+<span>{{10+2}}</span><br>
+<span>{{10*2}}</span>
+
+ <h1>Swich cases</h1>
+ <div [ngSwitch]="color">
+ <h2 style="color: red;" *ngSwitchCase="'red'"> red color</h2>
+ <h2 style="color: yellow;" *ngSwitchCase="'yellow'"> yellow color
+ </h2>
+ <h2 style="color: blue;" *ngSwitchCase="'blue'"> blue color</h2>
+ <h2 style="color: gold;" *ngSwitchDefault="''"> defult color</h2>
+</div> 
+
+<!-- <h1> for loop </h1> -->
+<div *ngFor="let item of data">
+    {{item.name}}
+    {{item.age}}
+
+</div> 
+ <table border="1">
+    <tr >
+    <td>name</td>
+    <td>age</td>
+    <td>Email</td>
+</tr> 
+<tr *ngFor="let itemarry of data">
+    <td>{{itemarry.name}}</td>
+    <td>{{itemarry.age}}</td>
+    <td>{{itemarry.email}}</td>
+</tr> 
+</table>
+
+<!-- pipes -->
+<div>
+    <h3>{{nam | uppercase}}</h3>
+    <h3>{{nam | lowercase}}</h3>
+    <h3>{{nam | titlecase}}</h3>
+</div>
+<div>
+    <h3>{{today | date}}</h3>
+    <h3>{{today | date:'fullDate'}}</h3>
+</div>
+<div>
+    <h3>{{str |slice :2 :6}}</h3>
+    
+</div>
+<div>
+    <h3>{{money | currency:"USD"}}</h3>
+    
+</div>
+
+<div>
+<h1>Routing</h1>
+</div>
+<br><br><a routerLink="/header">header route</a><br><br>
+<a routerLink="/users/login/login.component">Login route</a><br><br>
+<a routerLink="/users/signup/signup.component">signup route</a><br><br>
+<a routerLink="/user-list">userlist route</a><br><br>
+<router-outlet></router-outlet>
+
+<!-- directives -->
+ <h1>custom directive in angular </h1> 
+<h2 appCustomStyle>heading normal</h2>
+<h2 appCustomStyle>custom heading</h2> 
+<p appCustomStyle>This paragraph will be highlighted in yellow.</p>
+
+
+<!-- services -->
+<h1>services</h1>
+<!-- <h2>{{}}</h2>  -->
+ 
+<!-- table list data -->
+<table border="1">
+    <tr>
+        <td>Id</td>
+        <td>Title</td>
+        <td>User ID</td>
+    </tr>
+    <tr *ngFor="let item of Data">
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.userId}}</td>
+   
+    </tr> 
+</table> 
+
+<table mat-table  class="mat-elevation-z8 demo-table">
+  
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="demo-name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="demo-weight">
+    <th mat-header-cell *matHeaderCellDef> Weight </th>
+    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="demo-symbol">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+
+
+
+<!-- i want add componet here (user-list)-->
+<!-- <app-user-list></app-user-list> -->
+
+<!-- add child componet as a header -->
+<!-- <app-header></app-header> -->
+
+<!-- Lazy Loading  -->
+<h2>Admin Lazy loading</h2>
+<ul>
+    <li><a routerLink="admin/list">List</a> </li>
+    <li><a routerLink="admin/order">Order</a></li>
+</ul>
+<h2>Lazy-loading module</h2>
+<ul>
+    <li><a routerLink="lazy-loading/home">Home</a> </li>
+    <li><a routerLink="lazy-loading/about">About</a></li>
+</ul>
+
+<h1>Lazy loading componet</h1>
+<button (click)="LoadHeading()">Load header</button>
+
