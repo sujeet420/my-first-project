@@ -120,6 +120,8 @@ enabledBox(){
   this.disableBox=false
 }
 
+mobile="Realme 2 pro"
+
 //if condition
 show="No"
 // with string if condition
