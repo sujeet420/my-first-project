@@ -1,2 +1,10 @@
 <p> child component header works!</p>
 
+<form >
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="enter name" [(ngModel)]="name"><br>
+        <small>This name will be set in the service</small>
+    </div>
+</form>
+<button (click)="setName()" class="btn btn-primary">submit</button>

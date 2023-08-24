@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 // import form 
-import {FormsModule} from '@angular/forms';
+import {FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 //create directive with using command auto import here
 import { CustomStyleDirective } from './custom-style.directive'
@@ -36,6 +36,7 @@ import {MatTableDataSource} from '@angular/material/table' // not worl material 
     FormsModule ,// write here also 
     HttpClientModule, //http
     MatSlideToggleModule ,
+    ReactiveFormsModule
     
   ],
   providers: [],

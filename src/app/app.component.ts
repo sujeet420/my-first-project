@@ -5,6 +5,8 @@ import { Component ,ViewContainerRef ,ComponentFactoryResolver} from '@angular/c
 // declare var navigator :Navigator; 
 import { ServiceUserService } from './service-user.service';
 
+//forms
+import {FormBuilder, FormControl, FormGroup, Validator, Validators} from '@angular/forms'
 
 @Component({
   selector: 'app-root',
@@ -16,13 +18,73 @@ export class AppComponent {
   va1="hi \n my name is sujeet"
   varaib="hello world"
   appnamesena="sujeet new app"
+//structure directive
+
+items: any[]=[];
+  //form instance create
+  //form-control use
+  // fnameControl:FormControl;
+  // LnameControl:FormControl;
+  // EmailControl:FormControl;
+
+  //form-group use
+  personalFormGroup :FormGroup;
+
+  //service use Define two properties 
+  currentDate:String;
+  currentTime:String;
 
 //lazy loading component
 constructor(
 private Vcr:ViewContainerRef,
 private cfr:ComponentFactoryResolver,
-private http:ServiceUserService
-){}
+private http:ServiceUserService,
+private fb :FormBuilder,
+private timeServe:ServiceUserService
+){
+  //structure directive
+  this.items.push({"name":"Bob","age":19});
+  this.items.push({"name":"Basic","age":24});
+  this.items.push({"name":"namit","age":23});
+  this.items.push({"name":"pandey","age":17});
+  this.items.push({"name":"satish","age":18});
+
+  //form - control use make one by one
+  // this.fnameControl = new FormControl("Knowledge")
+  // this.LnameControl = new FormControl("KIll")
+  // this.EmailControl = new FormControl("Abc@gmail.com")
+
+  //form-group use make it one group
+  /*this.personalFormGroup =new FormGroup({
+    fname : new FormControl("sujeet"),
+    lname : new FormControl("Pandit"),
+    email : new FormControl("abc@gmail.com")
+  })*/
+
+  //validation add using FromBuilder
+this.personalFormGroup = this.fb.group({
+  fname : ['sujeet',Validators.compose(
+    [
+      Validators.required,
+      Validators.minLength(5),
+    ]
+  )],
+  lname :['Pandit'],
+  email :['abc@gmail.com', Validators.email]
+})
+
+//service use here 
+this.currentDate = this.timeServe.getTime().toLocaleDateString();
+this.currentTime = this.timeServe.getTime().toLocaleTimeString();
+}
+onFormSubmit(formData:any){
+  //console.log(this.personalFormGroup.value)
+  console.log(formData)
+}
+
+
+
+
 //lazy loading component
 async LoadHeading(){
   this.Vcr.clear();

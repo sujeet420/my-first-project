@@ -12,4 +12,10 @@ export class HeaderComponent {
 constructor(){
   console.warn("header component lazy loading loaded")
 }
+
+name :any ;
+
+setName(){
+  console.log(this.name)
+}
 }

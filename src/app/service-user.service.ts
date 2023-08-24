@@ -25,4 +25,8 @@ export class ServiceUserService {
       id:100
     }
   }
+
+  getTime(){
+    return new Date();
+  }
 }

@@ -218,3 +218,66 @@ style="background-color: rgb(11, 207, 109);">mouse evt</h1>
 <h1>Lazy loading componet</h1>
 <button (click)="LoadHeading()">Load header</button>
 
+<!-- structural directive with two condition -->
+<ul>
+    <ng-container *ngFor="let item of items" >
+    <li *ngIf="item.age>17">
+{{item.name}}'s age is {{item.age}}. 
+    </li>
+</ng-container>
+</ul>
+<h1>form </h1>
+<!-- form-control use  -->
+<!-- <div class="containere mt-3">
+    <form>
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" name="fname" class="form-control" [formControl]="fnameControl"/>
+        </div>
+        <div class="form-group">
+            <label for="Lname">Last Name</label>
+            <input type="text" name="Lname" class="form-control" [formControl]="LnameControl"/>
+        </div>
+        <div class="form-group">
+            <label for="Lname">Email</label>
+            <input type="text" name="email" class="form-control" [formControl]="EmailControl"/>
+        </div>
+    </form>
+</div>
+ -->
+<div>
+    <!-- use #f="ngForm" eference to the form -->
+    <form [formGroup]="personalFormGroup" #f="ngForm" (ngSubmit)="onFormSubmit(f.value)">   <!-- Added formGroup directive -->
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" name="fname" class="form-control" formControlName="fname">
+
+        </div>
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" name="lname" class="form-control" formControlName="lname">
+
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" name="email" class="form-control" formControlName="email">
+
+        </div>
+        <button type="submit" class="btn btn-primary"  [disabled]="f.invalid" >Submit</button>
+    </form>
+    <div> 
+        <div>Form Data: {{ f.value | json }}</div> 
+        <div>Valid {{ f.valid }}</div> 
+        <div>Invalid {{ f.invalid }}</div> 
+    </div> 
+    <div>
+        <div>Current Date: {{ currentDate }}</div>
+        <div>Current TIme {{ currentTime }}</div>
+   </div>
+</div>
+<br>
+<div>services called here get and set value</div><br>
+
+  <div>
+    <app-header></app-header>
+  </div>
